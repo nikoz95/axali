@@ -1,47 +1,93 @@
-﻿@{
-    
-    ViewBag.Title = "Home Page";
+﻿@model TextComparator.ViewModel.Mistake
+
+@{
+    ViewData["Title"] = "Home Page";
+
 }
 
 
-<div class="container m-auto" id="calc">
-    <div class="calcBG col-md-3  m-auto">
+@if (((string)ViewData["requestForm"]) == "index")
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="left_box">
+    
+                <div class="text_result" name="stringOne">
+                    @foreach (var row in Model.MistaceOrigin)
+                    {
+
+                        <span class="title">@row.Text</span><br>
+                        <span class="RowText">@row.RowText</span><br>
+                        <span class="WordId">@row.WordId</span><br>
+                       
+
+
+
+                    }
+                </div>
+        </div>
+    </div>
+        <div class="col-md-6">
+            <div class="right_box">
+                <textarea name="stringTwo"></textarea>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+<form action="/" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="left_box">
+                <textarea name="stringOne"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="right_box">
+                <textarea name="stringTwo"></textarea>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success text-center">Find Differnce</button>
+</form>
+
+<script>
+   
+    
+       
+    var WordId = $('.WordId').text();
+    var RowText = $('.WordId').text();
+    var text = $('.title').text();
+    var split = text.split(' ');
+    console.log(split);
+
+    for (var i = 0; i < text.length; i++) {
+        if (console.log(text[WordId] == RowText)) {
+            text[WordId] = '<strong>' + text[WordId] + '<strong>';
+        }
+    }
+            //text[0] = '<strong>' + text[WordId] + '<strong>';
+            
+
         
-        <form action="/" method="post" name="calc" id="FORMID">
-            <div class="row" id="result">
-                <input type="text" class="screen text-right" name="result" readonly placeholder="@ViewBag.result">
-              </form>
-            </div>
-            <div class="row">
-                <button id="allClear" type="button" class="btn btn-danger" onclick="clearScreen()">C</button>
+      
+           
+
+   
 
 
-                
-            </div>
-            <div class="row">
-                <button id="7" type="button" class="btn btn-info" name="seven" onclick="myFunction(this.id)">7</button>
-                <button id="8" type="button" class="btn btn-info" name="eight" onclick="myFunction(this.id)">8</button>
-                <button id="9" type="button" class="btn btn-info" name="nine" onclick="myFunction(this.id)">9</button>
-                <button id="*" type="button" class="btn btn-info" onclick="myFunction(this.id)">x</button>
-            </div>
-            <div class="row">
-                <button id="4" type="button" class="btn btn-info" name="four" onclick="myFunction(this.id)">4</button>
-                <button id="5" type="button" class="btn btn-info" name="five" onclick="myFunction(this.id)">5</button>
-                <button id="6" type="button" class="btn btn-info" name="six" onclick="myFunction(this.id)">6</button>
-                <button id="-" type="button" class="btn btn-info" name="subs" onclick="myFunction(this.id)">-</button>
-            </div>
-            <div class="row">
-                <button id="1" type="button" class="btn btn-info" name="one" onclick="myFunction(this.id)">1</button>
-                <button id="2" type="button" class="btn btn-info" name="two" onclick="myFunction(this.id)">2</button>
-                <button id="3" type="button" class="btn btn-info" name="three" onclick="myFunction(this.id)">3</button>
-                <button id="+" type="button" class="btn btn-info" name="plus" onclick="myFunction(this.id)">+</button>
-            </div>
-            <div class="row">
-                <button id="0" type="button" class="btn btn-info" name="zero" onclick="myFunction(this.id)">0</button>
-                <button id="/" type="button" class="btn btn-info" name="divide" onclick="myFunction(this.id)">÷</button>
-                <button id="equals" type="submit" name="equals" form="FORMID" class="btn btn-success" onclick="calculate()">=</button>
-               
-                    <button id="blank" type="button" class="btn btn-info">&nbsp;</button>
-</div>
-</div>
-</div>
+   
+
+</script>
+
